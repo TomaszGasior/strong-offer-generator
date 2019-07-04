@@ -1,0 +1,11 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Edytuj osobę{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+{% endblock %}
+
+{% block after_title_widget %}
+    <a href="{{ path('author.remove', {id: author.id}) }}" class="btn btn-danger button-needs-confirm">Usuń osobę</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Edytuj rabat{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+{% endblock %}
+
+{% block after_title_widget %}
+    <a href="{{ path('discount.remove', {id: discount.id}) }}" class="btn btn-danger button-needs-confirm">Usuń rabat</a>
+{% endblock %}

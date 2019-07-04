@@ -1,0 +1,28 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Osoby{% endblock %}
+
+{% block body %}
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Imię i nazwisko</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>
+                        <a href="{{ path('author.edit', {id: author.id}) }}">
+                            {{ author.name }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block after_title_widget %}
+    <a href="{{ path('author.create') }}" class="btn btn-primary">Nowa osoba</a>
+{% endblock %}

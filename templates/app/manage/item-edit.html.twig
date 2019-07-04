@@ -1,0 +1,11 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Edytuj pozycję{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+{% endblock %}
+
+{% block after_title_widget %}
+    <a href="{{ path('item.remove', {id: item.id}) }}" class="btn btn-danger button-needs-confirm">Usuń pozycję</a>
+{% endblock %}

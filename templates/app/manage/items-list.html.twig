@@ -1,0 +1,32 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Pozycje{% endblock %}
+
+{% block body %}
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>
+                        <a href="{{ path('item.edit', {id: item.id}) }}">
+                            {{ item.name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ item.price }} zł
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block after_title_widget %}
+    <a href="{{ path('item.create') }}" class="btn btn-primary">Nowa pozycja</a>
+{% endblock %}

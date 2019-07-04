@@ -1,0 +1,33 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Rabaty{% endblock %}
+
+{% block body %}
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Wartość</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for discount in discounts %}
+                <tr>
+                    <td>
+                        <a href="{{ path('discount.edit', {id: discount.id}) }}">
+                            {{ discount.name }}
+                        </a>
+                    </td>
+                    <td>
+                        -{{ discount.value }}
+                        {{- discount.type == constant('App\\Entity\\Discount::TYPE_PERCENT') ? '%' : ' zł' }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block after_title_widget %}
+    <a href="{{ path('discount.create') }}" class="btn btn-primary">Nowy rabat</a>
+{% endblock %}

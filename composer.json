@@ -19,6 +19,7 @@
         "twbs/bootstrap": "^4.3"
     },
     "require-dev": {
+        "ext-pdo_sqlite": "*",
         "doctrine/doctrine-fixtures-bundle": "^3.2",
         "fzaninotto/faker": "^1.8",
         "symfony/debug-bundle": "4.3.*",

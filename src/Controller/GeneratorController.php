@@ -21,6 +21,6 @@ class GeneratorController extends AbstractController
      */
     public function form(): Response
     {
-        return new Response;
+        return $this->render('app/generator-form.html.twig');
     }
 }

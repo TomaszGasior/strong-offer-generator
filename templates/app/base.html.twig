@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="pl">
+    <head>
+        <title>{{ block('title') ?? 'Bez tytułu' }} — Mocnych ofert generator</title>
+        <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+    </head>
+
+    <body class="container mt-4 mb-5">
+        <header class="border-bottom pb-3 mb-3">
+            <h1 class="mb-3">Mocnych ofert generator</h1>
+            <nav class="nav">
+                <a class="nav-link btn-light" href="{{ path('generator.form') }}">Generuj ofertę</a>
+                <span class="ml-1 nav-link disabled">Zarządzaj:</span>
+                <a class="nav-link" href="{{ path('item.list') }}">Pozycje</a>
+                <a class="nav-link" href="{{ path('discount.list') }}">Rabaty</a>
+                <a class="nav-link" href="{{ path('author.list') }}">Osoby</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col">
+                    <h2 class="mb-4">{{ block('title') ?? 'Bez tytułu' }}</h2>
+                </div>
+                <div class="col-auto">
+                    {% block after_title_widget %}{% endblock %}
+                </div>
+            </div>
+
+            {% block body %}{% endblock %}
+        </main>
+
+        <script>
+        (function(){
+            var buttonWithConfirmation = document.querySelector('.button-needs-confirm');
+
+            if (!buttonWithConfirmation) {
+                return;
+            }
+
+            buttonWithConfirmation.addEventListener('click', function(event){
+                if (!window.confirm('Czy na pewno usunąć? NIE MOŻNA COFNĄĆ!')) {
+                    event.preventDefault();
+                }
+            })
+        })();
+        </script>
+    </body>
+</html>

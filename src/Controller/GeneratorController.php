@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\GeneratorJobType;
+use App\Offer\Offer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,8 +22,19 @@ class GeneratorController extends AbstractController
     /**
      * @Route("/generator", name="generator.form")
      */
-    public function form(): Response
+    public function form(Request $request): Response
     {
-        return $this->render('app/generator-form.html.twig');
+        $offer = new Offer;
+
+        $form = $this->createForm(GeneratorJobType::class, $offer);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd($offer);
+        }
+
+        return $this->render('app/generator-form.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

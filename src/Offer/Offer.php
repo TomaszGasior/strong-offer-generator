@@ -11,12 +11,17 @@ class Offer
 {
     /**
      * @Assert\NotBlank
+     * @Assert\Type("string")
+     */
+    private $company;
+
+    /**
+     * @Assert\NotBlank
      * @Assert\Type(Author::class)
      */
     private $author;
 
     /**
-     * @Assert\NotBlank
      * @Assert\Type("array")
      * @Assert\All({@Assert\Type(Discount::class)})
      */
@@ -29,7 +34,19 @@ class Offer
      */
     private $items = [];
 
-    public function getAuthor(): Author
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(string $company): self
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
     {
         return $this->author;
     }
@@ -41,7 +58,7 @@ class Offer
         return $this;
     }
 
-    public function getDiscounts(): array
+    public function getDiscounts(): ?array
     {
         return $this->discounts;
     }
@@ -53,7 +70,7 @@ class Offer
         return $this;
     }
 
-    public function getItems(): array
+    public function getItems(): ?array
     {
         return $this->items;
     }

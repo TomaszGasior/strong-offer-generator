@@ -19,8 +19,7 @@
                         </a>
                     </td>
                     <td>
-                        -{{ discount.value }}
-                        {{- discount.type == constant('App\\Entity\\Discount::TYPE_PERCENT') ? '%' : ' zł' }}
+                        {{ format_discount_value(discount) }}
                     </td>
                 </tr>
             {% endfor %}

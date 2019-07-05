@@ -6,6 +6,7 @@ use App\Entity\Author;
 use App\Entity\Discount;
 use App\Entity\Item;
 use App\Offer\Offer;
+use App\Util\Formatter;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -30,14 +31,26 @@ class GeneratorJobType extends AbstractType
             ->add('items', EntityType::class, [
                 'label' => 'Pozycje',
                 'class' => Item::class,
-                'choice_label' => 'name',
+                'choice_label' => function(Item $item){
+                    return sprintf(
+                        '%s (%s)',
+                        $item->getName(),
+                        Formatter::formatPrice($item->getPrice())
+                    );
+                },
                 'multiple' => true,
                 'expanded' => true,
             ])
             ->add('discounts', EntityType::class, [
                 'label' => 'Rabaty',
                 'class' => Discount::class,
-                'choice_label' => 'name',
+                'choice_label' => function(Discount $discount){
+                    return sprintf(
+                        '%s (%s)',
+                        $discount->getName(),
+                        Formatter::formatDiscountValue($discount)
+                    );
+                },
                 'multiple' => true,
                 'expanded' => true,
             ])

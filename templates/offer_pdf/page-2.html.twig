@@ -45,7 +45,7 @@
                         {{ item.visualName ?? item.name }}
                     </td>
                     <td>
-                        {{ item.price }} zł
+                        {{ format_price(item.price) }}
                     </td>
                 </tr>
             {% endfor %}
@@ -55,7 +55,7 @@
                     Suma
                 </th>
                 <td>
-                    {{ calculation.sum }} zł
+                    {{ format_price(calculation.sum) }}
                 </td>
             </tr>
         </tbody>
@@ -75,8 +75,7 @@
                         {{ discount.visualName ?? discount.name }}
                     </td>
                     <td>
-                        {{ discount.value }}
-                        {{- discount.type == constant('App\\Entity\\Discount::TYPE_PERCENT') ? '%' : ' zł' }}
+                        {{ format_discount_value(discount) }}
                     </td>
                 </tr>
             {% endfor %}
@@ -86,7 +85,7 @@
                     Suma z uwzględnieniem rabatu
                 </th>
                 <td>
-                    {{ calculation.sumAfterDiscounts }} zł
+                    {{ format_price(calculation.sumAfterDiscounts) }}
                 </td>
             </tr>
         </tbody>

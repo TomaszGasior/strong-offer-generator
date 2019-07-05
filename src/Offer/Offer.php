@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Offer;
 
 use App\Entity\Author;
 use App\Entity\Discount;

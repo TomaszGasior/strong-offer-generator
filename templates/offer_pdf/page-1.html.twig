@@ -1,0 +1,40 @@
+{% extends 'offer_pdf/document-layout.html.twig' %}
+
+{% block stylesheet %}
+    body {
+        font-family: "Segoe UI", "Tahoma", "Arial";
+    }
+    .content {
+        padding: 10% 10%;
+    }
+    h1 {
+        font-size: 45px;
+        margin-top: 40px;
+    }
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <h1>Oferta</h1>
+
+    <h2>Sporządzona przez:</h2>
+    <p>
+        {{ offer.author.name }}
+        {% if offer.author.email %}
+            <br>e-mail: {{ offer.author.email }}
+        {% endif %}
+        {% if offer.author.phone %}
+            <br>telefon: {{ offer.author.phone }}
+        {% endif %}
+    </p>
+
+    <h2>Przygotowana dla:</h2>
+    <p>
+        {{ offer.company }}
+    </p>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

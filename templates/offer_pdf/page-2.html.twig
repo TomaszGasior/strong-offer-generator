@@ -1,0 +1,97 @@
+{% extends 'offer_pdf/document-layout.html.twig' %}
+
+{% block stylesheet %}
+    body {
+        font-family: "Segoe UI", "Tahoma", "Arial";
+        font-size: 18px;
+    }
+    .content {
+        padding: 10% 10%;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    table td, table th {
+        border: 1px solid black;
+        padding: 7px 10px;
+    }
+    table tr > *:last-child {
+        width: 20%;
+    }
+    table th {
+        text-align: left;
+    }
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <h2>Wycena</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produkt</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in offer.items %}
+                <tr>
+                    <td>
+                        {{ item.visualName ?? item.name }}
+                    </td>
+                    <td>
+                        {{ item.price }} zł
+                    </td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <th>
+                    Suma
+                </th>
+                <td>
+                    {{ calculation.sum }} zł
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Rabat</th>
+                <th>Wartość</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for discount in offer.discounts %}
+                <tr>
+                    <td>
+                        {{ discount.visualName ?? discount.name }}
+                    </td>
+                    <td>
+                        {{ discount.value }}
+                        {{- discount.type == constant('App\\Entity\\Discount::TYPE_PERCENT') ? '%' : ' zł' }}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <th>
+                    Suma z uwzględnieniem rabatu
+                </th>
+                <td>
+                    {{ calculation.sumAfterDiscounts }} zł
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

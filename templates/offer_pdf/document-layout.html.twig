@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            html, body {
+                height: 100%;
+                width: 100%;
+            }
+            .table-layout {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+
+                display: table;
+                width: 100%;
+                height: 100%;
+
+                border-bottom: 1px solid transparent;
+            }
+            .table-layout-header, .table-layout-content, .table-layout-footer {
+                display: table-row;
+            }
+            .table-layout-header, .table-layout-footer {
+                height: 1px;
+            }
+            {% block stylesheet %}{% endblock %}
+        </style>
+    </head>
+
+    <body>
+        <div class="table-layout">
+            <div class="table-layout-header">
+                <div class="header">
+                    {% block header %}{% endblock %}
+                </div>
+            </div>
+            <div class="table-layout-content">
+                <div class="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+            <div class="table-layout-footer">
+                <div class="footer">
+                    {% block footer %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

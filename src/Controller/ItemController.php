@@ -63,6 +63,8 @@ class ItemController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->flush();
+
+            return $this->redirectToRoute('item.list');
         }
 
         return $this->render('app/manage/item-edit.html.twig', [

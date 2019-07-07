@@ -14,12 +14,14 @@
             {% for item in items %}
                 <tr>
                     <td>
-                        <a href="{{ path('item.edit', {id: item.id}) }}">
+                        <a href="{{ path('item.edit', {id: item.id}) }}" class="d-block">
                             {{ item.name }}
                         </a>
                     </td>
                     <td>
-                        {{ format_price(item.price) }}
+                        <span class="text-right d-block" style="max-width: 100px">
+                            {{ format_price(item.price) }}
+                        </span>
                     </td>
                 </tr>
             {% endfor %}

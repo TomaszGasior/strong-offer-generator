@@ -14,12 +14,14 @@
             {% for discount in discounts %}
                 <tr>
                     <td>
-                        <a href="{{ path('discount.edit', {id: discount.id}) }}">
+                        <a href="{{ path('discount.edit', {id: discount.id}) }}" class="d-block">
                             {{ discount.name }}
                         </a>
                     </td>
                     <td>
-                        {{ format_discount_value(discount) }}
+                        <span class="text-right d-block" style="max-width: 100px">
+                            {{ format_discount_value(discount) }}
+                        </span>
                     </td>
                 </tr>
             {% endfor %}

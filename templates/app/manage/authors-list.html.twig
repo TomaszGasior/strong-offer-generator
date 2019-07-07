@@ -13,7 +13,7 @@
             {% for author in authors %}
                 <tr>
                     <td>
-                        <a href="{{ path('author.edit', {id: author.id}) }}">
+                        <a href="{{ path('author.edit', {id: author.id}) }}" class="d-block">
                             {{ author.name }}
                         </a>
                     </td>

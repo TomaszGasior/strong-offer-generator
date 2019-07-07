@@ -4,21 +4,38 @@
     <head>
         <title>{{ block('title') ?? 'Bez tytułu' }} — Mocnych ofert generator</title>
         <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
-    <body class="container mt-4 mb-5">
-        <header class="border-bottom pb-3 mb-3">
-            <h1 class="mb-3">Mocnych ofert generator</h1>
-            <nav class="nav">
-                <a class="nav-link btn-light" href="{{ path('generator.form') }}">Generuj ofertę</a>
-                <span class="ml-1 nav-link disabled">Zarządzaj:</span>
-                <a class="nav-link" href="{{ path('item.list') }}">Pozycje</a>
-                <a class="nav-link" href="{{ path('discount.list') }}">Rabaty</a>
-                <a class="nav-link" href="{{ path('author.list') }}">Osoby</a>
-            </nav>
+    <body style="overflow-y: scroll">
+        <header class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
+            <div class="container">
+                <h1 class="mb-0 navbar-brand">
+                    <a href="{{ path('generator.form') }}" class="navbar-brand">Mocnych ofert generator</a>
+                </h1>
+
+                <ul class="navbar-nav ml-auto">
+                    {% set route = app.request.attributes.get('_route') %}
+                    <li class="nav-item {{ route == 'generator.form' ? 'active' }}">
+                        <a class="nav-link" href="{{ path('generator.form') }}">Generuj ofertę</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="ml-3 nav-link disabled">Zarządzaj:</span>
+                    </li>
+                    <li class="nav-item {{ route == 'item.list' ? 'active' }}">
+                        <a class="nav-link" href="{{ path('item.list') }}">Pozycje</a>
+                    </li>
+                    <li class="nav-item {{ route == 'discount.list' ? 'active' }}">
+                        <a class="nav-link" href="{{ path('discount.list') }}">Rabaty</a>
+                    </li>
+                    <li class="nav-item {{ route == 'author.list' ? 'active' }}">
+                        <a class="nav-link" href="{{ path('author.list') }}">Osoby</a>
+                    </li>
+                </ul>
+            </div>
         </header>
 
-        <main>
+        <main class="container mt-4 mb-5">
             <div class="row">
                 <div class="col">
                     <h2 class="mb-4">{{ block('title') ?? 'Bez tytułu' }}</h2>

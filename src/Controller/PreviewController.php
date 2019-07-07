@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\GeneratorJobType;
 use App\Offer\Calculation;
 use App\Offer\Offer;
+use App\Offer\Recipient;
 use App\Renderer\PdfOfferRenderer;
 use App\Repository\AuthorRepository;
 use App\Repository\DiscountRepository;
@@ -49,14 +50,20 @@ class PreviewController extends AbstractController
 
     private function setUpFakeData(Offer $offer): void
     {
-        $authors = $this->authorRespository->findAll();
+        $author = $this->authorRespository->findAll()[0];
         $discounts = $this->discountRespository->findAll();
         $items = $this->itemRespository->findAll();
 
-        $offer->setAuthor($authors[0]);
+        $recipient = new Recipient;
+        $recipient->setCompany('Company Corp.');
+        $recipient->setName('John Smith');
+
+        $expirationDate = new \DateTime('+14 days');
+
+        $offer->setAuthor($author);
         $offer->setDiscounts($discounts);
         $offer->setItems($items);
-
-        $offer->setCompany('Company');
+        $offer->setRecipient($recipient);
+        $offer->setExpirationDate($expirationDate);
     }
 }

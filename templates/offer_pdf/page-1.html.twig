@@ -32,7 +32,10 @@
 
     <h2>Przygotowana dla:</h2>
     <p>
-        {{ offer.company }}
+        {% if offer.recipient.name %}
+            {{ offer.recipient.name }}<br>
+        {% endif %}
+        {{ offer.recipient.company }}
     </p>
 {% endblock %}
 

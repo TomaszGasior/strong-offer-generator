@@ -11,9 +11,10 @@ class Offer
 {
     /**
      * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Type(Recipient::class)
+     * @Assert\Valid
      */
-    private $company;
+    private $recipient;
 
     /**
      * @Assert\NotBlank
@@ -34,14 +35,14 @@ class Offer
      */
     private $items = [];
 
-    public function getCompany(): ?string
+    public function getRecipient(): ?Recipient
     {
-        return $this->company;
+        return $this->recipient;
     }
 
-    public function setCompany(string $company): self
+    public function setRecipient(Recipient $recipient): self
     {
-        $this->company = $company;
+        $this->recipient = $recipient;
 
         return $this;
     }

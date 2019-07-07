@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\GeneratorJobType;
 use App\Offer\Calculation;
 use App\Offer\Offer;
+use App\Offer\Recipient;
 use App\Renderer\PdfOfferRenderer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,9 @@ class GeneratorController extends AbstractController
     {
         $offer = new Offer;
         $calculation = new Calculation($offer);
+        $recipient = new Recipient;
 
+        $offer->setRecipient($recipient);
         $renderer->setOfferData($offer, $calculation);
 
         $form = $this->createForm(GeneratorJobType::class, $offer, ['method' => 'GET']);

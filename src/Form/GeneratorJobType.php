@@ -19,14 +19,19 @@ class GeneratorJobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('company', TextType::class, [
-                'label' => 'Firma',
-            ])
             ->add('author', EntityType::class, [
                 'label' => 'Osoba wystawiająca',
                 'class' => Author::class,
                 'choice_label' => 'name',
                 'required' => false, /* show empty element */
+            ])
+            ->add('recipient_company', null, [
+                'property_path' => 'recipient.company',
+                'label' => 'Firma',
+            ])
+            ->add('recipient_name', null, [
+                'property_path' => 'recipient.name',
+                'label' => 'Imię i nazwisko',
             ])
             ->add('items', EntityType::class, [
                 'label' => 'Pozycje',

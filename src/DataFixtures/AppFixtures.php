@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
 {
     private $faker;
 
-    public function __construct($value='')
+    public function __construct()
     {
         $this->faker = Factory::create('pl_PL');
     }
@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
         for ($i=0; $i < 3; $i++) {
             $author = new Author;
 
-            $author->setName($f->name);
+            $author->setName($f->firstName . ' ' . $f->lastName);
             $author->setEmail($f->safeEmail);
             $author->setPhone($f->phoneNumber);
 
@@ -63,7 +63,7 @@ class AppFixtures extends Fixture
             $item = new Item;
 
             $item->setName($itemName);
-            $item->setPrice($f->randomNumber(2));
+            $item->setPrice($f->randomFloat(2, 90, 3000));
 
             $manager->persist($item);
         }

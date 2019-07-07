@@ -23,6 +23,12 @@ class Offer
     private $author;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Type(DateTimeInterface::class)
+     */
+    private $expirationDate;
+
+    /**
      * @Assert\Type("array")
      * @Assert\All({@Assert\Type(Discount::class)})
      */
@@ -34,6 +40,11 @@ class Offer
      * @Assert\All({@Assert\Type(Item::class)})
      */
     private $items = [];
+
+    public function __construct()
+    {
+        $this->expirationDate = new \DateTime('+14 days');
+    }
 
     public function getRecipient(): ?Recipient
     {
@@ -55,6 +66,18 @@ class Offer
     public function setAuthor(Author $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getExpirationDate(): ?\DateTimeInterface
+    {
+        return $this->expirationDate;
+    }
+
+    public function setExpirationDate(\DateTimeInterface $expirationDate): self
+    {
+        $this->expirationDate = $expirationDate;
 
         return $this;
     }

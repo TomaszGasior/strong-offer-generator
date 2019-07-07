@@ -37,6 +37,11 @@
         {% endif %}
         {{ offer.recipient.company }}
     </p>
+
+    <p>
+        <br>
+        Oferta ważna do: {{ offer.expirationDate|date }}.
+    </p>
 {% endblock %}
 
 {% block footer %}

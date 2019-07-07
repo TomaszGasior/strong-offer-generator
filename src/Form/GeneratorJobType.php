@@ -9,6 +9,7 @@ use App\Offer\Offer;
 use App\Util\Formatter;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,6 +33,10 @@ class GeneratorJobType extends AbstractType
             ->add('recipient_name', null, [
                 'property_path' => 'recipient.name',
                 'label' => 'Imię i nazwisko',
+            ])
+            ->add('expirationDate', DateType::class, [
+                'label' => 'Data ważności',
+                'widget' => 'single_text',
             ])
             ->add('items', EntityType::class, [
                 'label' => 'Pozycje',

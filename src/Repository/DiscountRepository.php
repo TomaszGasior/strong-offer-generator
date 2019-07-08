@@ -21,6 +21,11 @@ class DiscountRepository extends ServiceEntityRepository
         parent::__construct($registry, Discount::class);
     }
 
+    public function findAllEnabledByDefault(): array
+    {
+        return $this->findBy(['enabledByDefault' => true]);
+    }
+
     // /**
     //  * @return Discount[] Returns an array of Discount objects
     //  */

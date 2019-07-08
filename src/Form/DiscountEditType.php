@@ -36,6 +36,9 @@ class DiscountEditType extends AbstractType
                 'label' => 'Numer sortowania',
                 'help' => 'Im większa liczba, tym wyżej ten rabat znajdzie się w wygenerowanej ofercie.',
             ])
+            ->add('enabledByDefault', null, [
+                'label' => 'Domyślnie zaznaczaj ten rabat przy tworzeniu oferty',
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz rabat',
             ])

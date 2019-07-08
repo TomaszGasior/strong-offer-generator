@@ -36,6 +36,9 @@ class OfferFactory
         $offer->setItems(
             $this->itemRespository->findAllEnabledByDefault()
         );
+        $offer->setDiscounts(
+            $this->discountRespository->findAllEnabledByDefault()
+        );
 
         return $offer;
     }

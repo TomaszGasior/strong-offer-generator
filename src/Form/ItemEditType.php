@@ -27,6 +27,9 @@ class ItemEditType extends AbstractType
                 'label' => 'Numer sortowania',
                 'help' => 'Im większa liczba, tym wyżej ta pozycja znajdzie się w wygenerowanej ofercie.',
             ])
+            ->add('enabledByDefault', null, [
+                'label' => 'Domyślnie zaznaczaj tę pozycję przy tworzeniu oferty',
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz pozycję',
             ])

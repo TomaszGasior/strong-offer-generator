@@ -33,6 +33,10 @@ class OfferFactory
             new \DateTime(sprintf('+%d days', self::DEFAULT_EXPIRATION_DAYS))
         );
 
+        $offer->setItems(
+            $this->itemRespository->findAllEnabledByDefault()
+        );
+
         return $offer;
     }
 

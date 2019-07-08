@@ -21,6 +21,11 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
+    public function findAllEnabledByDefault(): array
+    {
+        return $this->findBy(['enabledByDefault' => true]);
+    }
+
     // /**
     //  * @return Item[] Returns an array of Item objects
     //  */

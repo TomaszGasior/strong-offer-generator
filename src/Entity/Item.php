@@ -43,6 +43,11 @@ class Item
      */
     private $position;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabledByDefault = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +97,18 @@ class Item
     public function setPosition(?int $position): self
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function isEnabledByDefault(): bool
+    {
+        return $this->enabledByDefault;
+    }
+
+    public function setEnabledByDefault(bool $enabledByDefault): self
+    {
+        $this->enabledByDefault = $enabledByDefault;
 
         return $this;
     }

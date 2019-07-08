@@ -15,6 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GeneratorController extends AbstractController
 {
+    private $pdfFilePattern;
+
+    public function __construct(?string $pdfFilePattern)
+    {
+        $this->pdfFilePattern = $pdfFilePattern;
+    }
+
     /**
      * @Route("/")
      */
@@ -41,9 +48,14 @@ class GeneratorController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $response = new Response($renderer->generate());
 
+            if ($this->pdfFilePattern) {
+                $filename = sprintf(
+                    $this->pdfFilePattern . '.pdf',
+                    str_replace(['/', '\\'], '', $recipient->getCompany())
+                );
+            }
             $response->headers->set('Content-Disposition', $response->headers->makeDisposition(
-                ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-                'offer_' . date('Y-m-d') . '.pdf',
+                ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename ?? null, date('Y-m-d').'.pdf'
             ));
             $response->headers->set('Content-Type', 'application/pdf');
 

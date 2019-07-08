@@ -32,6 +32,5 @@ services:
             $pdfFilePattern: '%env(PDF_FILE_PATTERN)%'
     App\Renderer\PdfOfferRenderer:
         arguments:
-            $templatePaths:
-                - '%env(resolve:CUSTOM_TEMPLATE_DIR)%'
-                - '%kernel.project_dir%/templates/offer_pdf/helper'
+            $templatePath: '%env(resolve:CUSTOM_TEMPLATE_DIR)%'
+            $helperPath: '%kernel.project_dir%/templates/offer_pdf/helper'

@@ -14,13 +14,15 @@ class PdfOfferRenderer
     private $twig;
     private $offer;
     private $calculation;
-    private $templatePaths;
+    private $templatePath;
+    private $helperPath;
 
-    public function __construct(Pdf $pdf, Environment $twig, array $templatePaths)
+    public function __construct(Pdf $pdf, Environment $twig, string $templatePath, string $helperPath)
     {
         $this->pdf = $pdf;
         $this->twig = $twig;
-        $this->templatePaths = $templatePaths;
+        $this->templatePath = $templatePath;
+        $this->helperPath = $helperPath;
     }
 
     public function setOfferData(Offer $offer, Calculation $calculation)
@@ -36,7 +38,7 @@ class PdfOfferRenderer
         $savedPaths = $loader->getPaths();
         $savedCache = $this->twig->getCache();
 
-        $loader->setPaths($this->templatePaths);
+        $loader->setPaths([$this->templatePath, $this->helperPath]);
         $this->twig->setCache(false);
 
         $ret = $this->render();

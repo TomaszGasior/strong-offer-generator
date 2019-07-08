@@ -49,11 +49,11 @@ class PdfOfferRenderer
             'offer' => $this->offer,
             'calculation' => $this->calculation,
         ];
-        foreach (range(1, 25) as $i) {
-            try {
-                $renderedPages[] = $this->twig->render('page-'.$i.'.html.twig', $variables);
-            } catch (LoaderError $e) {
-                continue;
+        foreach (range(1, 100) as $i) {
+            $template = sprintf('page-%d.html.twig', $i);
+
+            if ($this->twig->getLoader()->exists($template)) {
+                $renderedPages[] = $this->twig->render($template, $variables);
             }
         }
 

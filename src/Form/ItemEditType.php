@@ -23,6 +23,10 @@ class ItemEditType extends AbstractType
             ->add('price', null, [
                 'label' => 'Cena',
             ])
+            ->add('position', null, [
+                'label' => 'Numer sortowania',
+                'help' => 'Im większa liczba, tym wyżej ta pozycja znajdzie się w wygenerowanej ofercie.',
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz pozycję',
             ])

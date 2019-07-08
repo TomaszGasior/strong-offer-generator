@@ -38,6 +38,11 @@ class Item
      */
     private $price;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +80,18 @@ class Item
     public function setPrice($price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }

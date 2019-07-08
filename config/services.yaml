@@ -4,6 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    env(CUSTOM_TEMPLATE_DIR): '%kernel.project_dir%/templates/offer_pdf/example'
+    env(PDF_FILE_PATTERN): ''
 
 services:
     # default configuration for services in *this* file
@@ -27,9 +29,9 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Controller\GeneratorController:
         arguments:
-            $pdfFilePattern: '%env(default::PDF_FILE_PATTERN)%'
+            $pdfFilePattern: '%env(PDF_FILE_PATTERN)%'
     App\Renderer\PdfOfferRenderer:
         arguments:
             $templatePaths:
-                - '%env(default::resolve:CUSTOM_TEMPLATE_DIR)%'
-                - '%kernel.project_dir%/templates/offer_pdf'
+                - '%env(resolve:CUSTOM_TEMPLATE_DIR)%'
+                - '%kernel.project_dir%/templates/offer_pdf/helper'

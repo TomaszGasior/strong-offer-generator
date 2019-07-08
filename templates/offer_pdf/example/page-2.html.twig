@@ -61,35 +61,37 @@
         </tbody>
     </table>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Rabat</th>
-                <th>Wartość</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for discount in offer.discounts %}
+    {% if offer.discounts %}
+        <table>
+            <thead>
                 <tr>
+                    <th>Rabat</th>
+                    <th>Wartość</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for discount in offer.discounts %}
+                    <tr>
+                        <td>
+                            {{ discount.visualName ?? discount.name }}
+                        </td>
+                        <td>
+                            {{ format_discount_value(discount) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <th>
+                        Suma z uwzględnieniem rabatu
+                    </th>
                     <td>
-                        {{ discount.visualName ?? discount.name }}
-                    </td>
-                    <td>
-                        {{ format_discount_value(discount) }}
+                        {{ format_price(calculation.sumAfterDiscounts) }}
                     </td>
                 </tr>
-            {% endfor %}
-
-            <tr>
-                <th>
-                    Suma z uwzględnieniem rabatu
-                </th>
-                <td>
-                    {{ format_price(calculation.sumAfterDiscounts) }}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}
 
 {% block footer %}

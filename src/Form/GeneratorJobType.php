@@ -77,4 +77,11 @@ class GeneratorJobType extends AbstractType
             'data_class' => Offer::class,
         ]);
     }
+
+    public function getBlockPrefix(): string
+    {
+        // Generator controller sets GET method on this form to make possible to save
+        // offer settings as URL. Remove block prefix to make that URL shorter.
+        return '';
+    }
 }

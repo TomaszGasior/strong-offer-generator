@@ -47,16 +47,20 @@ class OfferFactory
     {
         $offer = $this->createBlankOffer();
 
-        $author = $this->authorRespository->findOneBy([]);
-        $discounts = $this->discountRespository->findAll();
-        $items = $this->itemRespository->findAll();
+        $offer->setAuthor(
+            $this->authorRespository->findOneBy([])
+        );
+        $offer->setDiscounts(
+            $this->discountRespository->findAll()
+        );
+        $offer->setItems(
+            $this->itemRespository->findAll()
+        );
 
-        $offer->setAuthor($author);
-        $offer->setDiscounts($discounts);
-        $offer->setItems($items);
-
-        $offer->getRecipient()->setCompany('Company Corp.');
-        $offer->getRecipient()->setName('John Smith');
+        $offer->getRecipient()
+            ->setCompany('Company Corp.')
+            ->setName('John Smith')
+        ;
 
         return $offer;
     }

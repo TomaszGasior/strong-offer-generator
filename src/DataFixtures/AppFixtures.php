@@ -37,12 +37,15 @@ class AppFixtures extends Fixture
         $discount->setName('Rabat za odnośnik w stopce');
         $discount->setValue(100);
         $discount->setType(Discount::TYPE_STATIC);
+        $discount->setPosition(1);
         $manager->persist($discount);
 
         $discount = new Discount;
         $discount->setName('Rabat za zapłatę z góry');
         $discount->setValue(10);
         $discount->setType(Discount::TYPE_PERCENT);
+        $discount->setPosition(10);
+        $discount->setEnabledByDefault(true);
         $manager->persist($discount);
 
         $itemsNames = [
@@ -59,11 +62,15 @@ class AppFixtures extends Fixture
             'Certyfikat zabezpieczeń SSL',
         ];
 
-        foreach ($itemsNames as $itemName) {
+        foreach ($itemsNames as $i => $itemName) {
             $item = new Item;
 
             $item->setName($itemName);
             $item->setPrice($f->randomFloat(2, 90, 3000));
+            $item->setEnabledByDefault($i < 4);
+            if ($f->boolean(75)) {
+                $item->setPosition($f->numberBetween(1, 50));
+            }
 
             $manager->persist($item);
         }

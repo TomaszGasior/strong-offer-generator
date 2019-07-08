@@ -34,3 +34,4 @@ services:
         arguments:
             $templatePath: '%env(resolve:CUSTOM_TEMPLATE_DIR)%'
             $helperPath: '%kernel.project_dir%/templates/offer_pdf/helper'
+            $debug: '%kernel.debug%'

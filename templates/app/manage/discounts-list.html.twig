@@ -3,31 +3,27 @@
 {% block title %}Rabaty{% endblock %}
 
 {% block body %}
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
+                <th class="text-right table-minimal">Numer</th>
+                <th class="text-right table-minimal">Wartość</th>
                 <th>Nazwa</th>
-                <th>Wartość</th>
-                <th>Numer</th>
             </tr>
         </thead>
         <tbody>
             {% for discount in discounts %}
                 <tr>
+                    <td class="text-right">
+                        {{ discount.position }}
+                    </td>
+                    <td class="text-right">
+                        {{ format_discount_value(discount) }}
+                    </td>
                     <td>
                         <a href="{{ path('discount.edit', {id: discount.id}) }}" class="d-block">
                             {{ discount.name }}
                         </a>
-                    </td>
-                    <td>
-                        <span class="text-right d-block" style="max-width: 100px">
-                            {{ format_discount_value(discount) }}
-                        </span>
-                    </td>
-                    <td>
-                        <span class="text-right d-block" style="max-width: 40px">
-                            {{ discount.position }}
-                        </span>
                     </td>
                 </tr>
             {% endfor %}

@@ -5,22 +5,25 @@
         <title>{{ block('title') ?? 'Bez tytułu' }} — Mocnych ofert generator</title>
         <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            th.table-minimal { width: 13%; min-width: 110px; }
+        </style>
     </head>
 
     <body style="overflow-y: scroll">
         <header class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
-            <div class="container">
+            <div class="container d-block d-md-flex">
                 <h1 class="mb-0 navbar-brand">
-                    <a href="{{ path('generator.form') }}" class="navbar-brand">Mocnych ofert generator</a>
+                    <a href="{{ path('generator.form') }}" class="navbar-brand">Mocnych ofert generator 💪</a>
                 </h1>
 
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto mr-md-n1">
                     {% set route = app.request.attributes.get('_route') %}
-                    <li class="nav-item {{ route == 'generator.form' ? 'active' }}">
+                    <li class="nav-item {{ route == 'generator.form' ? 'active' }} mr-3">
                         <a class="nav-link" href="{{ path('generator.form') }}">Generuj ofertę</a>
                     </li>
                     <li class="nav-item">
-                        <span class="ml-3 nav-link disabled">Zarządzaj:</span>
+                        <span class="nav-link disabled">Zarządzaj:</span>
                     </li>
                     <li class="nav-item {{ route == 'item.list' ? 'active' }}">
                         <a class="nav-link" href="{{ path('item.list') }}">Pozycje</a>

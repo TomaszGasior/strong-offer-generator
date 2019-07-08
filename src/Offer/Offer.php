@@ -41,11 +41,6 @@ class Offer
      */
     private $items = [];
 
-    public function __construct()
-    {
-        $this->expirationDate = new \DateTime('+14 days');
-    }
-
     public function getRecipient(): ?Recipient
     {
         return $this->recipient;

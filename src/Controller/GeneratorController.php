@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\GeneratorJobType;
 use App\Offer\Calculation;
 use App\Offer\Offer;
+use App\Offer\OfferFactory;
 use App\Offer\Recipient;
 use App\Renderer\PdfOfferRenderer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,13 +34,11 @@ class GeneratorController extends AbstractController
     /**
      * @Route("/generator", name="generator.form")
      */
-    public function form(Request $request, PdfOfferRenderer $renderer): Response
+    public function form(Request $request, PdfOfferRenderer $renderer, OfferFactory $factory): Response
     {
-        $offer = new Offer;
+        $offer = $factory->createBlankOffer();
         $calculation = new Calculation($offer);
-        $recipient = new Recipient;
 
-        $offer->setRecipient($recipient);
         $renderer->setOfferData($offer, $calculation);
 
         $form = $this->createForm(GeneratorJobType::class, $offer, ['method' => 'GET']);
@@ -51,7 +50,7 @@ class GeneratorController extends AbstractController
             if ($this->pdfFilePattern) {
                 $filename = sprintf(
                     $this->pdfFilePattern . '.pdf',
-                    str_replace(['/', '\\'], '', $recipient->getCompany())
+                    str_replace(['/', '\\'], '', $offer->getRecipient()->getCompany())
                 );
             }
             $response->headers->set('Content-Disposition', $response->headers->makeDisposition(

@@ -18,7 +18,7 @@
                         {{ item.position }}
                     </td>
                     <td class="text-right">
-                        {{ format_price(item.price) }}
+                        {{ item.price|format_price }}
                     </td>
                     <td>
                         <a href="{{ path('item.edit', {id: item.id}) }}" class="d-block">

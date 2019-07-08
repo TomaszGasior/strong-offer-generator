@@ -45,7 +45,7 @@
                         {{ item.visualName ?? item.name }}
                     </td>
                     <td>
-                        {{ format_price(item.price) }}
+                        {{ item.price|format_price }}
                     </td>
                 </tr>
             {% endfor %}
@@ -55,7 +55,7 @@
                     Suma
                 </th>
                 <td>
-                    {{ format_price(calculation.sum) }}
+                    {{ calculation.sum|format_price }}
                 </td>
             </tr>
         </tbody>
@@ -86,7 +86,7 @@
                         Suma z uwzględnieniem rabatu
                     </th>
                     <td>
-                        {{ format_price(calculation.sumAfterDiscounts) }}
+                        {{ calculation.sumAfterDiscounts|format_price }}
                     </td>
                 </tr>
             </tbody>

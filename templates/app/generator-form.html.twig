@@ -1,7 +1,33 @@
 {% extends 'app/base.html.twig' %}
+{% form_theme form with "bootstrap_4_layout.html.twig" only %}
 
 {% block title %}Generuj ofertę{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div class="row">
+            <div class="col-sm">
+                {{ form_row(form.author) }}
+                {{ form_row(form.expirationDate) }}
+            </div>
+            <div class="col-sm">
+                {{ form_row(form.recipient_company) }}
+                {{ form_row(form.recipient_name) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                {{ form_row(form.items) }}
+            </div>
+            <div class="col-lg">
+                {{ form_row(form.discounts) }}
+            </div>
+        </div>
+
+        <div class="mt-2">
+            {{ form_row(form.generate) }}
+        </div>
+    {{ form_end(form) }}
 {% endblock %}

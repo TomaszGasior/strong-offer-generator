@@ -26,13 +26,14 @@ class GeneratorJobType extends AbstractType
                 'choice_label' => 'name',
                 'required' => false, /* show empty element */
             ])
-            ->add('recipient_company', null, [
+            ->add('recipient_company', TextType::class, [
                 'property_path' => 'recipient.company',
                 'label' => 'Firma',
             ])
-            ->add('recipient_name', null, [
+            ->add('recipient_name', TextType::class, [
                 'property_path' => 'recipient.name',
                 'label' => 'Imię i nazwisko',
+                'required' => false,
             ])
             ->add('expirationDate', DateType::class, [
                 'label' => 'Data ważności',

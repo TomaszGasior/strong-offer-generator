@@ -32,6 +32,10 @@ class DiscountEditType extends AbstractType
             ->add('value', null, [
                 'label' => 'Wartość',
             ])
+            ->add('position', null, [
+                'label' => 'Numer sortowania',
+                'help' => 'Im większa liczba, tym wyżej ten rabat znajdzie się w wygenerowanej ofercie.',
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Zapisz rabat',
             ])

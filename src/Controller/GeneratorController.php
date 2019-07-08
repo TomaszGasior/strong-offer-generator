@@ -25,13 +25,6 @@ class GeneratorController extends AbstractController
 
     /**
      * @Route("/")
-     */
-    public function index(): Response
-    {
-        return $this->redirectToRoute('generator.form');
-    }
-
-    /**
      * @Route("/generator", name="generator.form")
      */
     public function form(Request $request, PdfOfferRenderer $renderer, OfferFactory $factory): Response

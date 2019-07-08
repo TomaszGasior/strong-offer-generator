@@ -28,3 +28,8 @@ services:
     App\Controller\GeneratorController:
         arguments:
             $pdfFilePattern: '%env(default::PDF_FILE_PATTERN)%'
+    App\Renderer\PdfOfferRenderer:
+        arguments:
+            $templatePaths:
+                - '%env(default::resolve:CUSTOM_TEMPLATE_DIR)%'
+                - '%kernel.project_dir%/templates/offer_pdf'

@@ -32,11 +32,17 @@ class PdfOfferRenderer
     public function generate()
     {
         $loader = $this->twig->getLoader();
+
         $savedPaths = $loader->getPaths();
+        $savedCache = $this->twig->getCache();
 
         $loader->setPaths($this->templatePaths);
+        $this->twig->setCache(false);
+
         $ret = $this->render();
+
         $loader->setPaths($savedPaths);
+        $this->twig->setCache($savedCache);
 
         return $ret;
     }

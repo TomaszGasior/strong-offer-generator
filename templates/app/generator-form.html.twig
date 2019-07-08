@@ -9,7 +9,7 @@
 
         <div class="row">
             <div class="col-sm">
-                {{ form_row(form.author) }}
+                {{ form_row(form.author, {attr: {class: 'author-input'}}) }}
                 {{ form_row(form.expirationDate) }}
             </div>
             <div class="col-sm">
@@ -30,4 +30,16 @@
             {{ form_row(form.generate) }}
         </div>
     {{ form_end(form) }}
+
+    <script>
+    (function(){
+        const SESS_ITEM_AUTHOR = 'generator_form_saved_author';
+        var authorInput = document.querySelector('.author-input');
+
+        authorInput.addEventListener('change', function(){
+            localStorage.setItem(SESS_ITEM_AUTHOR, authorInput.value);
+        })
+        authorInput.value = localStorage.getItem(SESS_ITEM_AUTHOR);
+    })();
+    </script>
 {% endblock %}

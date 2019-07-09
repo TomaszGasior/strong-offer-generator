@@ -1,16 +1,18 @@
 {% extends 'document-layout.html.twig' %}
 
-{% block stylesheet %}
-    body {
-        font-family: "Segoe UI", "Tahoma", "Arial";
-    }
-    .content {
-        padding: 10% 10%;
-    }
-    h1 {
-        font-size: 45px;
-        margin-top: 40px;
-    }
+{% block html_head %}
+    <style>
+        body {
+            font-family: "Segoe UI", "Tahoma", "Arial";
+        }
+        .content {
+            padding: 10% 10%;
+        }
+        h1 {
+            font-size: 45px;
+            margin-top: 40px;
+        }
+    </style>
 {% endblock %}
 
 {% block header %}

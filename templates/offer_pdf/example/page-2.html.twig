@@ -1,29 +1,31 @@
 {% extends 'document-layout.html.twig' %}
 
-{% block stylesheet %}
-    body {
-        font-family: "Segoe UI", "Tahoma", "Arial";
-        font-size: 18px;
-    }
-    .content {
-        padding: 10% 10%;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    table td, table th {
-        border: 1px solid black;
-        padding: 7px 10px;
-    }
-    table tr > *:last-child {
-        width: 20%;
-        text-align: right;
-    }
-    table th {
-        text-align: left;
-    }
+{% block html_head %}
+    <style>
+        body {
+            font-family: "Segoe UI", "Tahoma", "Arial";
+            font-size: 18px;
+        }
+        .content {
+            padding: 10% 10%;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        table td, table th {
+            border: 1px solid black;
+            padding: 7px 10px;
+        }
+        table tr > *:last-child {
+            width: 20%;
+            text-align: right;
+        }
+        table th {
+            text-align: left;
+        }
+    </style>
 {% endblock %}
 
 {% block header %}

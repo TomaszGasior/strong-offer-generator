@@ -60,6 +60,10 @@ class PdfOfferRenderer
             'zoom' => 1.25,
         ];
 
+        if (!$renderedPages) {
+            throw new \RuntimeException('There is no HTML content to generate PDF document.');
+        }
+
         return $this->pdf->getOutputFromHtml($renderedPages, $settings);
     }
 }

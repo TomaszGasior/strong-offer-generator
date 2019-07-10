@@ -55,7 +55,6 @@ class PdfOfferRenderer
             'margin-left' => 0,
             'margin-right' => 0,
             'margin-top' => 0,
-            'no-outline' => true,
             'page-size' => 'A4',
             'zoom' => 1.25,
         ];

@@ -24,6 +24,9 @@
     <h2>Sporządzona przez:</h2>
     <p>
         {{ offer.author.name }}
+        {% if offer.author.title %}
+            <br>{{ offer.author.title }}
+        {% endif %}
         {% if offer.author.email %}
             <br>e-mail: {{ offer.author.email }}
         {% endif %}

@@ -16,6 +16,9 @@ class AuthorEditType extends AbstractType
             ->add('name', null, [
                 'label' => 'Imię i nazwisko',
             ])
+            ->add('title', null, [
+                'label' => 'Tytuł',
+            ])
             ->add('email', null, [
                 'label' => 'Adres e-mail',
             ])

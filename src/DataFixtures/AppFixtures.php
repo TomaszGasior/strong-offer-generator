@@ -29,6 +29,12 @@ class AppFixtures extends Fixture
             $author->setName($f->firstName . ' ' . $f->lastName);
             $author->setEmail($f->safeEmail);
             $author->setPhone($f->phoneNumber);
+            $author->setTitle($f->randomElement([
+                'Project manager',
+                'Developer',
+                'Designer',
+                'Handlowiec',
+            ]));
 
             $manager->persist($author);
         }

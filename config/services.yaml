@@ -6,6 +6,7 @@
 parameters:
     env(CUSTOM_TEMPLATE_DIR): '%kernel.project_dir%/templates/offer_pdf/example'
     env(PDF_FILE_PATTERN): ''
+    version: '0.0'
 
 services:
     # default configuration for services in *this* file

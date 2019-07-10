@@ -6,3 +6,5 @@ twig:
         - 'bootstrap_4_horizontal_layout.html.twig'
     date:
         format: 'Y-m-d'
+    globals:
+        version: '%version%'

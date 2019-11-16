@@ -5,7 +5,7 @@ namespace App\Form;
 use App\Entity\Author;
 use App\Entity\Discount;
 use App\Entity\Item;
-use App\Offer\Offer;
+use App\Model\Offer;
 use App\Util\Formatter;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

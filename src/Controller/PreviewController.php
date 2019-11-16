@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
+use App\Factory\OfferFactory;
 use App\Form\GeneratorJobType;
-use App\Offer\Calculation;
-use App\Offer\Offer;
-use App\Offer\OfferFactory;
+use App\Model\Offer;
+use App\Util\Calculator;
 use App\Renderer\PdfOfferRenderer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +20,7 @@ class PreviewController extends AbstractController
     public function preview(PdfOfferRenderer $renderer, OfferFactory $factory): Response
     {
         $offer = $factory->createPreviewOffer();
-        $calculation = new Calculation($offer);
+        $calculation = new Calculator($offer);
 
         $renderer->setOfferData($offer, $calculation);
 

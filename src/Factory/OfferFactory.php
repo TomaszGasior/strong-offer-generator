@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Offer;
+namespace App\Factory;
 
-use App\Offer\Recipient;
+use App\Model\Offer;
+use App\Model\Recipient;
 use App\Repository\AuthorRepository;
 use App\Repository\DiscountRepository;
 use App\Repository\ItemRepository;

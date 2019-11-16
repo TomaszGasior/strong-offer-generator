@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
+use App\Factory\OfferFactory;
 use App\Form\GeneratorJobType;
-use App\Offer\Calculation;
-use App\Offer\Offer;
-use App\Offer\OfferFactory;
-use App\Offer\Recipient;
+use App\Model\Offer;
+use App\Model\Recipient;
 use App\Renderer\PdfOfferRenderer;
+use App\Util\Calculator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +30,7 @@ class GeneratorController extends AbstractController
     public function form(Request $request, PdfOfferRenderer $renderer, OfferFactory $factory): Response
     {
         $offer = $factory->createBlankOffer();
-        $calculation = new Calculation($offer);
+        $calculation = new Calculator($offer);
 
         $renderer->setOfferData($offer, $calculation);
 

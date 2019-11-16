@@ -2,9 +2,9 @@
 
 namespace App\Renderer;
 
-use App\Offer\Calculation;
-use App\Offer\Offer;
+use App\Model\Offer;
 use App\Twig\AppExtension;
+use App\Util\Calculator;
 use Knp\Snappy\Pdf;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -32,7 +32,7 @@ class PdfOfferRenderer
         }));
     }
 
-    public function setOfferData(Offer $offer, Calculation $calculation)
+    public function setOfferData(Offer $offer, Calculator $calculation)
     {
         $this->twig->addGlobal('offer', $offer);
         $this->twig->addGlobal('calculation', $calculation);

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Offer;
+namespace App\Util;
 
 use App\Entity\Discount;
+use App\Model\Offer;
 
-class Calculation
+class Calculator
 {
     private $offer;
 

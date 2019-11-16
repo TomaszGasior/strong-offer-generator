@@ -6,6 +6,6 @@
     {{ form_start(form) }}
     {{ form_rest(form) }}
     <button class="btn-primary btn">Zapisz zmiany</button>
-    <a href="{{ path('discount.remove', {id: discount.id}) }}" class="btn btn-danger float-right">Usuń rabat</a>
+    <a href="{{ path('discount.delete', {id: discount.id}) }}" class="btn btn-danger float-right">Usuń rabat</a>
     {{ form_end(form) }}
 {% endblock %}

@@ -6,6 +6,6 @@
     {{ form_start(form) }}
     {{ form_rest(form) }}
     <button class="btn-primary btn">Zapisz zmiany</button>
-    <a href="{{ path('item.remove', {id: item.id}) }}" class="btn btn-danger float-right">Usuń pozycję</a>
+    <a href="{{ path('item.delete', {id: item.id}) }}" class="btn btn-danger float-right">Usuń pozycję</a>
     {{ form_end(form) }}
 {% endblock %}

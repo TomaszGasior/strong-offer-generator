@@ -74,9 +74,9 @@ class DiscountController extends AbstractController
     }
 
     /**
-     * @Route("/rabat/{id}/usun", name="discount.remove")
+     * @Route("/rabat/{id}/usun", name="discount.delete")
      */
-    public function remove(Discount $discount): Response
+    public function delete(Discount $discount): Response
     {
         $this->entityManager->remove($discount);
         $this->entityManager->flush();

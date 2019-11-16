@@ -74,9 +74,9 @@ class AuthorController extends AbstractController
     }
 
     /**
-     * @Route("/osoba/{id}/usun", name="author.remove")
+     * @Route("/osoba/{id}/usun", name="author.delete")
      */
-    public function remove(Author $author): Response
+    public function delete(Author $author): Response
     {
         $this->entityManager->remove($author);
         $this->entityManager->flush();

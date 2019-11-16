@@ -6,6 +6,6 @@
     {{ form_start(form) }}
     {{ form_rest(form) }}
     <button class="btn-primary btn">Zapisz zmiany</button>
-    <a href="{{ path('author.remove', {id: author.id}) }}" class="btn btn-danger float-right">Usuń osobę</a>
+    <a href="{{ path('author.delete', {id: author.id}) }}" class="btn btn-danger float-right">Usuń osobę</a>
     {{ form_end(form) }}
 {% endblock %}

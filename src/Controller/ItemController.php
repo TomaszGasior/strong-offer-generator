@@ -74,9 +74,9 @@ class ItemController extends AbstractController
     }
 
     /**
-     * @Route("/pozycja/{id}/usun", name="item.remove")
+     * @Route("/pozycja/{id}/usun", name="item.delete")
      */
-    public function remove(Item $item): Response
+    public function delete(Item $item): Response
     {
         $this->entityManager->remove($item);
         $this->entityManager->flush();

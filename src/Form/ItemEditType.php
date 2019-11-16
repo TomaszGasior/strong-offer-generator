@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Item;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,9 +28,6 @@ class ItemEditType extends AbstractType
             ])
             ->add('enabledByDefault', null, [
                 'label' => 'Domyślnie zaznaczaj tę pozycję przy tworzeniu oferty',
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Zapisz pozycję',
             ])
         ;
     }

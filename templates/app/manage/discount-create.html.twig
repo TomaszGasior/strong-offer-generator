@@ -3,5 +3,8 @@
 {% block title %}Utwórz rabat{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <button class="btn-primary btn">Utwórz rabat</button>
+    {{ form_end(form) }}
 {% endblock %}

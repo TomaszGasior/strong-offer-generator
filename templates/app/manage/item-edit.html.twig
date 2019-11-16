@@ -3,7 +3,10 @@
 {% block title %}Edytuj pozycję „{{ item.name }}”{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <button class="btn-primary btn">Zapisz zmiany</button>
+    {{ form_end(form) }}
 {% endblock %}
 
 {% block after_title_widget %}

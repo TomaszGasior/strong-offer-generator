@@ -3,5 +3,8 @@
 {% block title %}Utwórz osobę{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <button class="btn-primary btn">Utwórz osobę</button>
+    {{ form_end(form) }}
 {% endblock %}

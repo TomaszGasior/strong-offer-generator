@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Author;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,9 +23,6 @@ class AuthorEditType extends AbstractType
             ])
             ->add('phone', null, [
                 'label' => 'Numer telefonu',
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Zapisz osobę',
             ])
         ;
     }

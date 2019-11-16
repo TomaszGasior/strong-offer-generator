@@ -3,5 +3,8 @@
 {% block title %}Utwórz pozycję{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <button class="btn-primary btn">Utwórz pozycję</button>
+    {{ form_end(form) }}
 {% endblock %}

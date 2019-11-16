@@ -45,7 +45,7 @@ class DiscountController extends AbstractController
             $this->entityManager->persist($discount);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('discount.list');
+            return $this->redirectToRoute('discount.edit', ['id' => $discount->getId()]);
         }
 
         return $this->render('app/manage/discount-create.html.twig', [
@@ -64,8 +64,6 @@ class DiscountController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->flush();
-
-            return $this->redirectToRoute('discount.list');
         }
 
         return $this->render('app/manage/discount-edit.html.twig', [

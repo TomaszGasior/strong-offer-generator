@@ -45,7 +45,7 @@ class AuthorController extends AbstractController
             $this->entityManager->persist($author);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('author.list');
+            return $this->redirectToRoute('author.edit', ['id' => $author->getId()]);
         }
 
         return $this->render('app/manage/author-create.html.twig', [
@@ -64,8 +64,6 @@ class AuthorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->flush();
-
-            return $this->redirectToRoute('author.list');
         }
 
         return $this->render('app/manage/author-edit.html.twig', [

@@ -5,7 +5,6 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     env(CUSTOM_TEMPLATE_DIR): '%kernel.project_dir%/templates/offer_pdf/example'
-    env(PDF_FILE_PATTERN): ''
     version: '0.1'
 
 services:
@@ -28,9 +27,6 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\Controller\GeneratorController:
-        arguments:
-            $pdfFilePattern: '%env(PDF_FILE_PATTERN)%'
     App\Renderer\PdfOfferRenderer:
         arguments:
             $templatePath: '%env(resolve:CUSTOM_TEMPLATE_DIR)%'

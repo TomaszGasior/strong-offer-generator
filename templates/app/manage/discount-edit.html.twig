@@ -6,9 +6,6 @@
     {{ form_start(form) }}
     {{ form_rest(form) }}
     <button class="btn-primary btn">Zapisz zmiany</button>
+    <a href="{{ path('discount.remove', {id: discount.id}) }}" class="btn btn-danger float-right">Usuń rabat</a>
     {{ form_end(form) }}
-{% endblock %}
-
-{% block after_title_widget %}
-    <a href="{{ path('discount.remove', {id: discount.id}) }}" class="btn btn-danger button-needs-confirm">Usuń rabat</a>
 {% endblock %}

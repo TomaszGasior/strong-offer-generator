@@ -34,7 +34,7 @@
     <script>
     (function(){
         const SESS_ITEM_AUTHOR = 'generator_form_saved_author';
-        var authorInput = document.querySelector('.author-input');
+        let authorInput = document.querySelector('.author-input');
 
         authorInput.addEventListener('change', function(){
             localStorage.setItem(SESS_ITEM_AUTHOR, authorInput.value);

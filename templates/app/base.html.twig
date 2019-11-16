@@ -52,21 +52,5 @@
 
             {% block body %}{% endblock %}
         </main>
-
-        <script>
-        (function(){
-            var buttonWithConfirmation = document.querySelector('.button-needs-confirm');
-
-            if (!buttonWithConfirmation) {
-                return;
-            }
-
-            buttonWithConfirmation.addEventListener('click', function(event){
-                if (!window.confirm('Czy na pewno usunąć? NIE MOŻNA COFNĄĆ!')) {
-                    event.preventDefault();
-                }
-            })
-        })();
-        </script>
     </body>
 </html>

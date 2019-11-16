@@ -1,0 +1,12 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Usuń pozycję „{{ item.name }}”{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <p class="h5 mb-4">Czy na pewno chcesz usunąć pozycję „{{ item.name }}”? Tej czynności nie można cofnąć.</p>
+    <a href="{{ path('item.edit', {id: item.id}) }}" class="btn btn-secondary mr-3">Wróć</a>
+    <button class="btn btn-danger">Usuń bezpowrotnie</button>
+    {{ form_end(form) }}
+{% endblock %}

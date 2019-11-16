@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Author;
 use App\Form\AuthorEditType;
+use App\Form\DeleteConfirmType;
 use App\Repository\AuthorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -76,11 +77,21 @@ class AuthorController extends AbstractController
     /**
      * @Route("/osoba/{id}/usun", name="author.delete")
      */
-    public function delete(Author $author): Response
+    public function delete(Author $author, Request $request): Response
     {
-        $this->entityManager->remove($author);
-        $this->entityManager->flush();
+        $form = $this->createForm(DeleteConfirmType::class);
+        $form->handleRequest($request);
 
-        return $this->redirectToRoute('author.list');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->remove($author);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('author.list');
+        }
+
+        return $this->render('app/manage/author-delete.html.twig', [
+            'form' => $form->createView(),
+            'author' => $author,
+        ]);
     }
 }

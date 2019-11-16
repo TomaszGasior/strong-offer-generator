@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Item;
+use App\Form\DeleteConfirmType;
 use App\Form\ItemEditType;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -76,11 +77,21 @@ class ItemController extends AbstractController
     /**
      * @Route("/pozycja/{id}/usun", name="item.delete")
      */
-    public function delete(Item $item): Response
+    public function delete(Item $item, Request $request): Response
     {
-        $this->entityManager->remove($item);
-        $this->entityManager->flush();
+        $form = $this->createForm(DeleteConfirmType::class);
+        $form->handleRequest($request);
 
-        return $this->redirectToRoute('item.list');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->remove($item);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('item.list');
+        }
+
+        return $this->render('app/manage/item-delete.html.twig', [
+            'form' => $form->createView(),
+            'item' => $item,
+        ]);
     }
 }

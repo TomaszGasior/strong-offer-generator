@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Discount;
+use App\Form\DeleteConfirmType;
 use App\Form\DiscountEditType;
 use App\Repository\DiscountRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -76,11 +77,21 @@ class DiscountController extends AbstractController
     /**
      * @Route("/rabat/{id}/usun", name="discount.delete")
      */
-    public function delete(Discount $discount): Response
+    public function delete(Discount $discount, Request $request): Response
     {
-        $this->entityManager->remove($discount);
-        $this->entityManager->flush();
+        $form = $this->createForm(DeleteConfirmType::class);
+        $form->handleRequest($request);
 
-        return $this->redirectToRoute('discount.list');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->remove($discount);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('discount.list');
+        }
+
+        return $this->render('app/manage/discount-delete.html.twig', [
+            'form' => $form->createView(),
+            'discount' => $discount,
+        ]);
     }
 }
